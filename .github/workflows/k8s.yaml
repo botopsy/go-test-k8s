@@ -1,0 +1,30 @@
+name: K8s Check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check-kustomize:
+    name: Verify Kustomize
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Verify Kustomize base
+        run: |
+          kustomize build base
+
+      - name: Verify Kustomize dev
+        run: |
+          kustomize build overlays/dev dev.yaml
+
+      - name: Verify Kustomize qa
+        run: |
+          kustomize build overlays/qa qa.yaml
+
+      - name: Verify Kustomize prod
+        run: |
+          kustomize build overlays/prod > prod.yaml
