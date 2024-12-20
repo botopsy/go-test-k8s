@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-test-service
+  labels:
+    backstage.io/kubernetes-id: go-test
+spec:
+  selector:
+    app: go-test
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP

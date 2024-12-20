@@ -1,0 +1,16 @@
+resources:
+  - ../../base
+
+nameSuffix: -prod
+
+patches:
+  - target:
+      group: networking.k8s.io
+      version: v1
+      kind: Ingress
+      name: go-test-ingress
+    path: ingress.yaml
+
+images:
+  - name: ghcr.io/botopsy/go-test
+    newTag: latest
