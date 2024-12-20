@@ -1,4 +1,4 @@
-name: K8s Check
+name: Kustomize build
 
 on:
   push:
@@ -19,12 +19,12 @@ jobs:
 
       - name: Verify Kustomize dev
         run: |
-          kustomize build overlays/dev dev.yaml
+          kustomize build overlays/dev
 
       - name: Verify Kustomize qa
         run: |
-          kustomize build overlays/qa qa.yaml
+          kustomize build overlays/qa
 
       - name: Verify Kustomize prod
         run: |
-          kustomize build overlays/prod > prod.yaml
+          kustomize build overlays/prod
